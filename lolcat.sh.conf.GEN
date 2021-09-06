@@ -1,0 +1,22 @@
+#!/ hint/sh
+
+( set -eu;
+	#cd ../d/hsb/
+	cd 'C:/Users/pc57/lolcat.shtest' || exit
+	node -p '
+	(function (){
+		S="";
+		c=require("colorcolor");
+		for(var i=0; i<=360; i+=3) {
+			S += require("colorcolor")( "hsb("+i+",80%,100%)" , "rgb" )
+		};
+		return S.replace(
+			/rgb\(([^)]+),([^)]+),([^)]+)\)/gm,
+			"\33[38;2;$1;$2;$3m\u{2588}"
+			// █ -> \u{2588}
+		)
+	})()
+	'
+)
+# | tr -d '\n' # > lolcat.1.sh.conf
+#echo 
