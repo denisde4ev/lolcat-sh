@@ -2,13 +2,13 @@
 
 ( set -eu;
 	#cd ../d/hsb/
-	cd 'C:/Users/pc57/lolcat.shtest' || exit
+	cd -- "${0%/*}" || exit
 	node -p '
 	(function (){
 		S="";
 		c=require("colorcolor");
 		for(var i=0; i<=360; i+=3) {
-			S += require("colorcolor")( "hsb("+i+",80%,100%)" , "rgb" )
+			S += require("colorcolor")( "hsv("+i+",80%,70%)" , "rgb" )
 		};
 		return S.replace(
 			/rgb\(([^)]+),([^)]+),([^)]+)\)/gm,
